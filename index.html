@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZO | جودة تستاهل سعرها - العلامة التقنية الأولى للأداء والجودة</title>
+    
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            cyan: '#06b6d4',
+                            cyanHover: '#0891b2',
+                            sky: '#38bdf8',
+                            dark: '#070b14',
+                            card: '#0d1322',
+                            border: '#192338'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #070b14;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070b14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #192338;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+
+        /* Ambient Glow & Radial Backgrounds */
+        .glow-radial-top {
+            background: radial-gradient(circle at 50% -20%, rgba(6, 182, 212, 0.22) 0%, rgba(7, 11, 20, 0) 75%);
+        }
+        .glow-radial-center {
+            background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12) 0%, rgba(7, 11, 20, 0) 70%);
+        }
+        
+        /* Interactive Card Hover Effects */
+        .tech-card {
+            background: linear-gradient(180deg, rgba(13, 19, 34, 0.85) 0%, rgba(10, 15, 27, 0.95) 100%);
+            border: 1px solid rgba(25, 35, 56, 0.85);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-card:hover {
+            border-color: rgba(6, 182, 212, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px -12px rgba(6, 182, 212, 0.22);
+        }
+    </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 flex flex-col min-h-screen selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- Toast Notification (Replaces native alerts) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-28 opacity-0 transition-all duration-300 flex items-center gap-3 bg-slate-900 border border-cyan-500/50 text-white px-5 py-4 rounded-2xl shadow-2xl shadow-cyan-950/60 pointer-events-none">
+        <div class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check text-base"></i>
+        </div>
+        <div>
+            <p id="toast-title" class="font-bold text-sm text-cyan-300">تم الإرسال بنجاح</p>
+            <p id="toast-msg" class="text-xs text-slate-300">شكراً لتواصلك، سنقوم بالرد عليك في أقرب وقت.</p>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-[#070b14]/85 backdrop-blur-xl border-b border-slate-800/80 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 via-sky-400 to-cyan-300 flex items-center justify-center shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-200">
+                    <span class="font-black text-slate-950 text-xl tracking-tighter">AZO</span>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <span class="font-extrabold text-xl tracking-wide text-white group-hover:text-cyan-400 transition-colors">AZO</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-800/90 text-cyan-300 px-2 py-0.5 rounded-md border border-slate-700/60">TECH</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 font-medium">جودة تستاهل سعرها</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+                <a href="#hero" class="hover:text-cyan-400 transition-colors">الرئيسية</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">من نحن</a>
+                <a href="#pillars" class="hover:text-cyan-400 transition-colors">معايير الجودة</a>
+                <a href="#domains" class="hover:text-cyan-400 transition-colors">مجالات تخصصنا</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">تواصل معنا</a>
+            </nav>
+
+            <!-- Quick WhatsApp CTA (Desktop) -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/9647800000000?text=مرحباً%20AZO%20،%20أود%20التعرف%20أكثر%20على%20علامتكم%20التجارية" target="_blank" rel="noopener" 
+                   class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-sky-400 hover:from-cyan-400 hover:to-sky-300 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>تواصل مباشر</span>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+                <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-[#070b14]/95 px-6 py-5 space-y-4">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">الرئيسية</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">من نحن</a>
+            <a href="#pillars" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">معايير الجودة</a>
+            <a href="#domains" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">مجالات تخصصنا</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">تواصل معنا</a>
+            <div class="pt-2">
+                <a href="https://wa.me/9647800000000?text=مرحباً%20AZO%20،%20أود%20التعرف%20أكثر%20على%20علامتكم%20التجارية" target="_blank" rel="noopener" 
+                   class="w-full flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>محادثة واتساب مباشرة</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-16 pb-24 lg:pt-28 lg:pb-36 overflow-hidden glow-radial-top border-b border-slate-800/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <!-- Top Brand Tag -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-8 animate-pulse">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                    <span>العلامة التقنية الأولى للجودة والاعتمادية</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-snug sm:leading-tight max-w-4xl mx-auto mb-6">
+                    تقنية تواكب تطلعاتك اليومية <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-l from-cyan-400 via-sky-300 to-cyan-500">
+                        AZO | جودة تستاهل سعرها
+                    </span>
+                </h1>
+
+                <!-- Subtitle / Brand Promise -->
+                <p class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
+                    نحن لا نؤمن بالحلول الرديئة أو التجارية المؤقتة. ننتقي أدواتك التقنية بعناية هندسية فائقة لتضمن الأداء الحقيقي، المتانة الاستثنائية، والأناقة العصرية التي تليق بك.
+                </p>
+
+                <!-- Actions -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/9647800000000?text=مرحباً%20AZO%20،%20أود%20الاستفسار%20عن%20علامتكم%20التجارية" target="_blank" rel="noopener" 
+                       class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-3.5 rounded-xl font-bold text-base shadow-xl shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>تواصل معنا مباشرة</span>
+                    </a>
+
+                    <a href="#about" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-cyan-500/50 text-white px-7 py-3.5 rounded-xl font-semibold text-base transition-all">
+                        <span>تعرف على رؤيتنا</span>
+                        <i class="fa-solid fa-arrow-down text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- Trust Metrics / Highlights -->
+                <div class="mt-16 pt-10 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                    <div class="p-3">
+                        <p class="text-3xl font-black text-cyan-400">100%</p>
+                        <p class="text-xs text-slate-400 mt-1 font-semibold">فحص واختبار عملي</p>
+                    </div>
+                    <div class="p-3">
+                        <p class="text-3xl font-black text-cyan-400">معايير دولية</p>
+                        <p class="text-xs text-slate-400 mt-1 font-semibold">أمان حقيقي للأجهزة</p>
+                    </div>
+                    <div class="p-3">
+                        <p class="text-3xl font-black text-cyan-400">ضمان استبدال</p>
+                        <p class="text-xs text-slate-400 mt-1 font-semibold">موثوقية بدون تعقيدات</p>
+                    </div>
+                    <div class="p-3">
+                        <p class="text-3xl font-black text-cyan-400">استشارة مجانية</p>
+                        <p class="text-xs text-slate-400 mt-1 font-semibold">دعم تقني مباشر</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About AZO Section -->
+        <section id="about" class="py-20 lg:py-28 bg-[#090e1b] relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Text Story -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-compass"></i>
+                            <span>قصتنا وهويتنا</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                            لماذا أنشأنا علامة <span class="text-cyan-400">AZO</span>؟
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+                            في سوق مليء بالمنتجات المقلدة والإكسسوارات التجارية سريعة التلف التي قد تعرض أجهزتك الثمينة للخطر، انطلقت <strong class="text-white">AZO</strong> بمهمة واحدة وواضحة: <span class="text-cyan-300">تقديم ملحقات إلكترونية أصلية تعيش معك طويلاً وتمنحك القيمة الحقيقية لكل فلس تدفعه.</span>
+                        </p>
+                        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                            نحن لا نجمع المنتجات عشوائياً؛ بل نختبر كل تقنية، نراقب درجات الحرارة أثناء الشحن، نتأكد من متانة الكابلات ونقاء العزل الصوتي لنضمن لك راحة بال دائمة ورفيقاً تقنياً يعتمد عليه في يومك العملي.
+                        </p>
+
+                        <!-- Key Checklist -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3">
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <i class="fa-solid fa-check text-cyan-400 text-sm"></i>
+                                <span class="text-xs font-bold text-slate-200">وداعاً للشواحن المقلدة والخطرة</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <i class="fa-solid fa-check text-cyan-400 text-sm"></i>
+                                <span class="text-xs font-bold text-slate-200">مواد خام من سبائك متينة وألياف مقاومة</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <i class="fa-solid fa-check text-cyan-400 text-sm"></i>
+                                <span class="text-xs font-bold text-slate-200">توافق كامل مع أحدث هواتف Apple و Android</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <i class="fa-solid fa-check text-cyan-400 text-sm"></i>
+                                <span class="text-xs font-bold text-slate-200">تواصل مباشر وإنساني مع العملاء</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Artistic Tech Box -->
+                    <div class="lg:col-span-5">
+                        <div class="relative p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-[#0c1324] border border-cyan-500/20 shadow-2xl overflow-hidden">
+                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                            <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-sky-500/10 rounded-full blur-2xl"></div>
+
+                            <div class="relative z-10 text-center space-y-6">
+                                <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-tr from-cyan-500 to-sky-400 flex items-center justify-center text-slate-950 font-black text-3xl shadow-xl shadow-cyan-500/30">
+                                    AZO
+                                </div>
+                                <div class="space-y-1">
+                                    <h3 class="text-xl font-black text-white">TECH & ACCESSORIES</h3>
+                                    <p class="text-xs text-cyan-400 font-semibold tracking-wide">شعارنا: جودة تستاهل سعرها</p>
+                                </div>
+                                <blockquote class="text-xs text-slate-300 italic leading-relaxed border-t border-b border-slate-800 py-4">
+                                    "نؤمن بأن الإكسسوار الممتاز ليس ترفاً، بل هو الضامن لحماية هاتفك واستمرار طاقتك دون انقطاع."
+                                </blockquote>
+                                <div class="flex items-center justify-center gap-6 text-slate-400 text-sm">
+                                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-microchip text-cyan-400"></i> أداء حقيقي</span>
+                                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-award text-cyan-400"></i> فحص جودة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Pillars & Values Section -->
+        <section id="pillars" class="py-20 lg:py-28 bg-[#070b14] border-t border-slate-800/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider">ركائزنا الأساسية</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-2">معايير الجودة التي نبني عليها كل شيء</h2>
+                    <p class="text-slate-400 text-sm mt-3">قيم لا نساوم عليها لنضمن رضاك التام وتجربة استثنائية من أول استخدام.</p>
+                </div>
+
+                <!-- 4 Pillars Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Pillar 1 -->
+                    <div class="tech-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-filter-circle-dollar"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">انتقاء صارم للجودة</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            نستبعد مئات المنتجات التجارية التي تفشل في اختبارات الجهد والحرارة، ونختار فقط ما يستحق ثقتك ويدوم معك.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="tech-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">ضمان استبدال موثوق</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            ثقتنا بمنتجاتنا تجعلنا نقدم ضماناً واضحاً وسلساً، مع استبدال مباشر في حال ظهور أي عيب مصنعي بدون تعقيد.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="tech-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">أحدث المعايير التقنية</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            نواكب تقنيات نتريد الغاليوم (GaN)، بروتوكولات الشحن السريع PD 3.0، والعزل الصوتي النشط للأجهزة الذكية.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="tech-card p-6 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl mb-5">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">استشارة ودعم فني مخصص</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            لست متأكداً مما يحتاجه جهازك؟ فريقنا جاهز دائماً عبر الواتساب ليرشدك للخيار الصحيح والمتوافق تماماً.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Domains & Specialties Showcase (Informational Only - No Cart/Prices) -->
+        <section id="domains" class="py-20 lg:py-28 bg-[#090e1b] relative glow-radial-center border-t border-slate-800/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider">مجالات التميز</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-2">ما الذي نختص ونبدع في تقديمه؟</h2>
+                    <p class="text-slate-400 text-sm mt-3">منظومة شاملة من الملحقات الموجهة للمستخدمين أصحاب الذوق العالي والأداء الاحترافي.</p>
+                </div>
+
+                <!-- 4 Domains Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Domain 1: Charging & Power -->
+                    <div class="tech-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                                    <i class="fa-solid fa-charging-station"></i>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">تكنولوجيا GaN</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">حلول الطاقة والشحن فائق السرعة</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                شواحن جدارية ذكية مدمجة الحجم بقدرات تصل حتى 65W و 100W، وبنوك طاقة لاسلكية داعمة لتقنية MagSafe، وكابلات مدرعة مصممة لتحمل أكثر من 30,000 ثنية دون انقطاع.
+                            </p>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> شحن بارد بدون ارتفاع درجات الحرارة</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> حماية مدمجة ضد الماس الكهربائي وزيادة الجهد</li>
+                        </ul>
+                    </div>
+
+                    <!-- Domain 2: Audio & Acoustics -->
+                    <div class="tech-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                                    <i class="fa-solid fa-headphones"></i>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">صوت محيطي Hi-Fi</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">الصوتيات النقية وهندسة الاستماع</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                سماعات لاسلكية تدعم العزل النشط للضوضاء (ANC) وتوزيع صوتي ثلاثي الأبعاد، بالإضافة لمكبرات صوت خارجية مقاومة للماء توفر بيزاً عميقاً ونقاءً للمكالمات اليومية والاجتماعات.
+                            </p>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> ميكروفونات متعددة مخصصة لتصفية الرياح والضجيج</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> بطاريات طويلة العمر تدعم الاستخدام المتواصل طوال اليوم</li>
+                        </ul>
+                    </div>
+
+                    <!-- Domain 3: Desk & Mobile Mounts -->
+                    <div class="tech-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                                    <i class="fa-solid fa-desktop"></i>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">سبائك الألمنيوم</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">حوامل الأجهزة وبيئة العمل المريحة</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                منصات مكتبية أرجونومية مصممة من سبائك الألمنيوم المتين لرفع اللابتوب والآيباد والهواتف بزوايا صحية ومريحة للرقبة، وقواعد مغناطيسية متطورة للسيارات تثبت الهاتف بإحكام تام.
+                            </p>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> مفصلات معدنية قوية تتحمل الضغط وتدوم طويلاً</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> بطانات سيليكون ناعمة تمنع الخدوش تماماً</li>
+                        </ul>
+                    </div>
+
+                    <!-- Domain 4: Everyday Carry & Smart Accessories -->
+                    <div class="tech-card p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl">
+                                    <i class="fa-solid fa-shapes"></i>
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">الأداء اليومي EDC</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">ملحقات الحماية والأسلوب الرقمي</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                محولات ومنافذ Type-C متطورة لتوسيع قدرات جهازك، إكسسوارات حماية فائقة تجمع بين المتانة والوزن الخفيف، وأدوات ذكية تجعل تجربتك التقنية سلسة وأنيقة أينما تنقلت.
+                            </p>
+                        </div>
+                        <ul class="space-y-2.5 text-xs text-slate-400 border-t border-slate-800/80 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> تصميم فخم يتماشى مع أحدث الأجهزة الذكية</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i> اعتمادية كاملة تناسب نمط الحياة السريع</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Contact Section -->
+        <section id="contact" class="py-20 lg:py-28 bg-[#070b14] border-t border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    <!-- Contact Information Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="inline-flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-comments"></i>
+                            <span>تواصل مباشر وسريع</span>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-white">نسعد دائماً بالإجابة على استفساراتك</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            سواء كنت ترغب في استشارة لاختيار الملحق المناسب لجهازك، أو ترغب في الاستفسار عن توفر قطعه معينة، فريق AZO متواجد لمساعدتك.
+                        </p>
+
+                        <!-- Fast WhatsApp Direct Banner -->
+                        <div class="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-white">الرد السريع عبر الواتساب</h4>
+                                    <p class="text-xs text-slate-400">متاحون للرد المباشر خلال أوقات العمل</p>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/9647800000000?text=مرحباً%20AZO%20،%20أود%20الاستفسار%20عن%20منتجاتكم" target="_blank" rel="noopener" 
+                               class="w-full mt-2 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition-colors">
+                                <span>ابدأ محادثة فورية الآن</span>
+                                <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </a>
+                        </div>
+
+                        <!-- Direct info items -->
+                        <div class="space-y-3 pt-2 text-xs text-slate-300">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 text-cyan-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <span>العراق - تغطية وتوصيل لكافة المحافظات</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 text-cyan-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <span>يومياً: 10:00 صباحاً - 11:00 مساءً</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clean Inquiry Form Card -->
+                    <div class="lg:col-span-7">
+                        <div class="tech-card p-8 rounded-3xl">
+                            <h3 class="text-xl font-bold text-white mb-2">أرسل استفسارك أو رسالتك</h3>
+                            <p class="text-xs text-slate-400 mb-6">اكتب بياناتك وسنقوم بالتواصل معك عبر الواتساب أو الهاتف مباشرة.</p>
+
+                            <form id="contactForm" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-2">الاسم الكريم</label>
+                                    <input type="text" id="senderName" required placeholder="مثال: علي محمد" 
+                                           class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-300 mb-2">رقم الهاتف أو الواتساب</label>
+                                        <input type="tel" id="senderPhone" required dir="ltr" placeholder="0780 XXX XXXX" 
+                                               class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors text-right">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-300 mb-2">نوع الاستفسار</label>
+                                        <select id="inquiryType" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                                            <option value="استشارة لاختيار إكسسوار مناسب">استشارة لاختيار إكسسوار مناسب</option>
+                                            <option value="استفسار عن الشواحن وبنوك الطاقة">استفسار عن الشواحن وبنوك الطاقة</option>
+                                            <option value="استفسار عن الصوتيات والسماعات">استفسار عن الصوتيات والسماعات</option>
+                                            <option value="طلب خاص أو تعاون تجاري">طلب خاص أو تعاون تجاري</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-2">رسالتك أو تفاصيل جهازك</label>
+                                    <textarea id="senderMsg" rows="3" required placeholder="اكتب نوع جهازك واستفسارك هنا..." 
+                                              class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"></textarea>
+                                </div>
+
+                                <button type="submit" 
+                                        class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-sky-400 hover:from-cyan-400 hover:to-sky-300 text-slate-950 font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-cyan-500/20 transition-all transform active:scale-[0.99]">
+                                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                                    <span>إرسال الرسالة الآن</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#05080f] border-t border-slate-800/80 pt-12 pb-8 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-slate-800/80">
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-3 md:col-span-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-slate-950 font-black text-sm">AZO</div>
+                        <span class="font-extrabold text-white text-base">AZO TECH & ACCESSORIES</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        علامة تقنية رائدة تركز على الجودة والاعتمادية الحقيقية لملحقات الهواتف والأجهزة الذكية. شعارنا الثابت: "جودة تستاهل سعرها".
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">أقسام الموقع</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#hero" class="hover:text-cyan-400 transition-colors">الرئيسية</a></li>
+                        <li><a href="#about" class="hover:text-cyan-400 transition-colors">من نحن ورؤيتنا</a></li>
+                        <li><a href="#pillars" class="hover:text-cyan-400 transition-colors">معايير الجودة</a></li>
+                        <li><a href="#domains" class="hover:text-cyan-400 transition-colors">مجالات التخصص</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Specialties -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">مجالات التميز</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#domains" class="hover:text-cyan-400">تقنيات الشحن السريع GaN</a></li>
+                        <li><a href="#domains" class="hover:text-cyan-400">السماعات والصوتيات النقية</a></li>
+                        <li><a href="#domains" class="hover:text-cyan-400">قواعد التثبيت المكتبية والسيارات</a></li>
+                        <li><a href="#domains" class="hover:text-cyan-400">إكسسوارات الأداء اليومي EDC</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Social & Direct Reach -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">تابعنا وتواصل معنا</h4>
+                    <div class="flex items-center gap-3 text-lg mb-4">
+                        <a href="https://wa.me/9647800000000" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400 hover:border-emerald-500/50 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </div>
+                    <p class="text-[11px] text-slate-500">العراق - خدمة واستشارات تقنية لجميع المحافظات.</p>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+                <p>© 2026 AZO TECH & ACCESSORIES. جميع الحقوق محفوظة.</p>
+                <p class="text-slate-500">جودة تستاهل سعرها ⚡</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            const isHidden = menu.classList.contains('hidden');
+
+            if (isHidden) {
+                menu.classList.remove('hidden');
+                icon.className = 'fa-solid fa-xmark text-lg';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fa-solid fa-bars text-lg';
+            }
+        }
+
+        // Handle Contact / Inquiry Submission
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('senderName').value.trim();
+            const phone = document.getElementById('senderPhone').value.trim();
+            const type = document.getElementById('inquiryType').value;
+            const msg = document.getElementById('senderMsg').value.trim();
+
+            if (!name || !phone || !msg) return;
+
+            // Formulate WhatsApp redirect message
+            const storePhone = "9647800000000";
+            const fullMessage = `مرحباً AZO ⚡\nلدي استفسار جديد:\n- الاسم: ${name}\n- الهاتف: ${phone}\n- موضوع الاستفسار: ${type}\n- التفاصيل:\n${msg}`;
+            const encoded = encodeURIComponent(fullMessage);
+
+            // Show Toast feedback
+            showToast("تم تجهيز رسالتك", "جاري فتح المحادثة المباشرة مع فريق الدعم...");
+
+            // Reset form
+            document.getElementById('contactForm').reset();
+
+            // Open WhatsApp with pre-filled message
+            setTimeout(() => {
+                window.open(`https://wa.me/${storePhone}?text=${encoded}`, '_blank');
+            }, 600);
+        }
+
+        // Custom Toast Notification (Zero native alerts)
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = msg;
+
+            toast.classList.remove('translate-y-28', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-28', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZO | جودة تستاهل سعرها - العلامة التقنية الأولى للأداء والجودة</title>
+    <title>AZO | جودة تستاهل سعرها - العلامة التقنية الأولى للأداء والاعتمادية</title>
     
     <!-- Google Fonts: Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@
             overflow-x: hidden;
         }
         
-        /* Custom Modern Scrollbar */
+        /* Modern Slim Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -60,7 +60,7 @@
             background: #06b6d4;
         }
 
-        /* Ambient Glow & Radial Backgrounds */
+        /* Ambient Glow Backgrounds */
         .glow-radial-top {
             background: radial-gradient(circle at 50% -20%, rgba(6, 182, 212, 0.22) 0%, rgba(7, 11, 20, 0) 75%);
         }
@@ -68,9 +68,9 @@
             background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12) 0%, rgba(7, 11, 20, 0) 70%);
         }
         
-        /* Interactive Card Hover Effects */
+        /* Tech Card Styling & Interactions */
         .tech-card {
-            background: linear-gradient(180deg, rgba(13, 19, 34, 0.85) 0%, rgba(10, 15, 27, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(13, 19, 34, 0.88) 0%, rgba(10, 15, 27, 0.95) 100%);
             border: 1px solid rgba(25, 35, 56, 0.85);
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -78,6 +78,15 @@
             border-color: rgba(6, 182, 212, 0.45);
             transform: translateY(-4px);
             box-shadow: 0 16px 36px -12px rgba(6, 182, 212, 0.22);
+        }
+
+        /* Pulse Animation for Floating WhatsApp Button */
+        @keyframes customPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .animate-custom-pulse {
+            animation: customPulse 2.5s infinite ease-in-out;
         }
     </style>
 </head>
@@ -90,12 +99,24 @@
         </div>
         <div>
             <p id="toast-title" class="font-bold text-sm text-cyan-300">تم الإرسال بنجاح</p>
-            <p id="toast-msg" class="text-xs text-slate-300">شكراً لتواصلك، سنقوم بالرد عليك في أقرب وقت.</p>
+            <p id="toast-msg" class="text-xs text-slate-300">شكراً لتواصلك، جاري فتح الواتساب للتواصل معك.</p>
         </div>
     </div>
 
+    <!-- Floating WhatsApp Button -->
+    <aside class="fixed bottom-6 left-6 z-40">
+        <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20⚡%20أود%20الاستفسار%20عن%20منتجاتكم%20وخدماتكم" 
+           target="_blank" 
+           rel="noopener"
+           aria-label="تواصل عبر واتساب"
+           class="group flex items-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-3 rounded-full shadow-2xl shadow-emerald-500/40 transition-all transform hover:scale-105 animate-custom-pulse">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="hidden md:inline-block text-xs font-extrabold pr-1">محادثة مباشرة</span>
+        </a>
+    </aside>
+
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-[#070b14]/85 backdrop-blur-xl border-b border-slate-800/80 transition-all duration-200">
+    <header class="sticky top-0 z-30 bg-[#070b14]/85 backdrop-blur-xl border-b border-slate-800/80 transition-all duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-3 group">
@@ -122,10 +143,12 @@
 
             <!-- Quick WhatsApp CTA (Desktop) -->
             <div class="hidden sm:flex items-center gap-3">
-                <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20التعرف%20أكثر%20على%20علامتكم%20التجارية" target="_blank" rel="noopener" 
+                <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20التعرف%20أكثر%20على%20علامتكم%20التجارية" 
+                   target="_blank" 
+                   rel="noopener" 
                    class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-sky-400 hover:from-cyan-400 hover:to-sky-300 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all transform hover:-translate-y-0.5">
                     <i class="fa-brands fa-whatsapp text-base"></i>
-                    <span>تواصل مباشر</span>
+                    <span>واتساب: 07862303596</span>
                 </a>
             </div>
 
@@ -143,10 +166,12 @@
             <a href="#domains" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">مجالات تخصصنا</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="block text-sm font-bold text-slate-300 hover:text-cyan-400">تواصل معنا</a>
             <div class="pt-2">
-                <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20التعرف%20أكثر%20على%20علامتكم%20التجارية" target="_blank" rel="noopener" 
+                <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20التعرف%20أكثر%20على%20علامتكم%20التجارية" 
+                   target="_blank" 
+                   rel="noopener" 
                    class="w-full flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl text-sm">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>محادثة واتساب مباشرة</span>
+                    <span>تواصل مباشر: 07862303596</span>
                 </a>
             </div>
         </div>
@@ -157,8 +182,8 @@
         <section id="hero" class="relative pt-16 pb-24 lg:pt-28 lg:pb-36 overflow-hidden glow-radial-top border-b border-slate-800/40">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 <!-- Top Brand Tag -->
-                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-8 animate-pulse">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-8">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
                     <span>العلامة التقنية الأولى للجودة والاعتمادية</span>
                 </div>
 
@@ -177,10 +202,12 @@
 
                 <!-- Actions -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20الاستفسار%20عن%20علامتكم%20التجارية" target="_blank" rel="noopener" 
+                    <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20الاستفسار%20عن%20علامتكم%20التجارية" 
+                       target="_blank" 
+                       rel="noopener" 
                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-8 py-3.5 rounded-xl font-bold text-base shadow-xl shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>تواصل معنا مباشرة</span>
+                        <span>تواصل عبر الواتساب</span>
                     </a>
 
                     <a href="#about" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-cyan-500/50 text-white px-7 py-3.5 rounded-xl font-semibold text-base transition-all">
@@ -204,8 +231,8 @@
                         <p class="text-xs text-slate-400 mt-1 font-semibold">موثوقية بدون تعقيدات</p>
                     </div>
                     <div class="p-3">
-                        <p class="text-3xl font-black text-cyan-400">استشارة مجانية</p>
-                        <p class="text-xs text-slate-400 mt-1 font-semibold">دعم تقني مباشر</p>
+                        <p class="text-3xl font-black text-cyan-400">دعم مباشر</p>
+                        <p class="text-xs text-slate-400 mt-1 font-semibold">استشارة وتوجيه تقني</p>
                     </div>
                 </div>
             </div>
@@ -247,7 +274,7 @@
                             </div>
                             <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
                                 <i class="fa-solid fa-check text-cyan-400 text-sm"></i>
-                                <span class="text-xs font-bold text-slate-200">تواصل مباشر وإنساني مع العملاء</span>
+                                <span class="text-xs font-bold text-slate-200">تواصل مباشر وإنساني عبر 07862303596</span>
                             </div>
                         </div>
                     </div>
@@ -310,7 +337,7 @@
                         </div>
                         <h3 class="text-lg font-bold text-white mb-2">ضمان استبدال موثوق</h3>
                         <p class="text-xs text-slate-400 leading-relaxed">
-                            ثقتنا بمنتجاتنا تجعلنا نقدم ضماناً واضحاً وسلساً، مع استبدال مباشر في حال ظهور أي عيب مصنعي بدون تعقيد.
+                            ثقتنا بمنتجاتنا تجعلنا نقدم ضماناً واضحاً وسلساً، مع استبدال مباشر في حال ظهور أي عيب مصنعي بدون أي تعقيد.
                         </p>
                     </div>
 
@@ -339,7 +366,7 @@
             </div>
         </section>
 
-        <!-- Brand Domains & Specialties Showcase (Informational Only - No Cart/Prices) -->
+        <!-- Brand Domains & Specialties Showcase -->
         <section id="domains" class="py-20 lg:py-28 bg-[#090e1b] relative glow-radial-center border-t border-slate-800/70">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Section Header -->
@@ -446,10 +473,10 @@
                         </div>
                         <h2 class="text-3xl font-extrabold text-white">نسعد دائماً بالإجابة على استفساراتك</h2>
                         <p class="text-slate-400 text-sm leading-relaxed">
-                            سواء كنت ترغب في استشارة لاختيار الملحق المناسب لجهازك، أو ترغب في الاستفسار عن توفر قطعه معينة، فريق AZO متواجد لمساعدتك.
+                            سواء كنت ترغب في استشارة لاختيار الملحق المناسب لجهازك، أو ترغب في الاستفسار عن توفر قطعه معينة، فريق AZO متواجد لمساعدتك مباشرة.
                         </p>
 
-                        <!-- Fast WhatsApp Direct Banner -->
+                        <!-- Fast WhatsApp Direct Banner with User Phone Number -->
                         <div class="p-6 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-3">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
@@ -457,12 +484,14 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-sm text-white">الرد السريع عبر الواتساب</h4>
-                                    <p class="text-xs text-slate-400">متاحون للرد المباشر خلال أوقات العمل</p>
+                                    <p class="text-xs text-emerald-400 font-mono tracking-wider font-bold">0786 230 3596</p>
                                 </div>
                             </div>
-                            <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20الاستفسار%20عن%20منتجاتكم" target="_blank" rel="noopener" 
-                               class="w-full mt-2 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition-colors">
-                                <span>ابدأ محادثة فورية الآن</span>
+                            <a href="https://wa.me/9647862303596?text=مرحباً%20AZO%20،%20أود%20الاستفسار%20عن%20منتجاتكم" 
+                               target="_blank" 
+                               rel="noopener" 
+                               class="w-full mt-2 inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition-colors shadow-lg shadow-emerald-500/20">
+                                <span>ابدأ محادثة واتساب الآن</span>
                                 <i class="fa-solid fa-arrow-left text-xs"></i>
                             </a>
                         </div>
@@ -477,6 +506,12 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="w-8 h-8 rounded-lg bg-slate-800 text-cyan-400 flex items-center justify-center">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <span dir="ltr" class="font-mono">07862303596</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-slate-800 text-cyan-400 flex items-center justify-center">
                                     <i class="fa-solid fa-clock"></i>
                                 </div>
                                 <span>يومياً: 10:00 صباحاً - 11:00 مساءً</span>
@@ -488,7 +523,7 @@
                     <div class="lg:col-span-7">
                         <div class="tech-card p-8 rounded-3xl">
                             <h3 class="text-xl font-bold text-white mb-2">أرسل استفسارك أو رسالتك</h3>
-                            <p class="text-xs text-slate-400 mb-6">اكتب بياناتك وسنقوم بالتواصل معك عبر الواتساب أو الهاتف مباشرة.</p>
+                            <p class="text-xs text-slate-400 mb-6">اكتب بياناتك وسيقوم النظام بتجهيز رسالة منسقة وفتح محادثة الواتساب فوراً.</p>
 
                             <form id="contactForm" onsubmit="handleInquirySubmit(event)" class="space-y-4">
                                 <div>
@@ -509,7 +544,7 @@
                                             <option value="استشارة لاختيار إكسسوار مناسب">استشارة لاختيار إكسسوار مناسب</option>
                                             <option value="استفسار عن الشواحن وبنوك الطاقة">استفسار عن الشواحن وبنوك الطاقة</option>
                                             <option value="استفسار عن الصوتيات والسماعات">استفسار عن الصوتيات والسماعات</option>
-                                            <option value="طلب خاص أو تعاون تجاري">طلب خاص أو تعاون تجاري</option>
+                                            <option value="طلب خاص أو استفسار عام">طلب خاص أو استفسار عام</option>
                                         </select>
                                     </div>
                                 </div>
@@ -522,8 +557,8 @@
 
                                 <button type="submit" 
                                         class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-sky-400 hover:from-cyan-400 hover:to-sky-300 text-slate-950 font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-cyan-500/20 transition-all transform active:scale-[0.99]">
-                                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                                    <span>إرسال الرسالة الآن</span>
+                                    <i class="fa-brands fa-whatsapp text-base"></i>
+                                    <span>إرسال الاستفسار عبر واتساب</span>
                                 </button>
                             </form>
                         </div>
@@ -572,29 +607,30 @@
 
                 <!-- Col 4: Social & Direct Reach -->
                 <div>
-                    <h4 class="text-white font-bold text-sm mb-3">تابعنا وتواصل معنا</h4>
+                    <h4 class="text-white font-bold text-sm mb-3">تواصل مباشر</h4>
                     <div class="flex items-center gap-3 text-lg mb-4">
-                        <a href="https://wa.me/9647800000000" target="_blank" rel="noopener" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400 hover:border-emerald-500/50 flex items-center justify-center transition-all">
+                        <a href="https://wa.me/9647862303596" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-emerald-400 hover:border-emerald-500/50 flex items-center justify-center transition-all">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
+                        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
+                        <a href="#" aria-label="TikTok" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
                             <i class="fa-brands fa-tiktok"></i>
                         </a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
+                        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 flex items-center justify-center transition-all">
                             <i class="fa-brands fa-facebook"></i>
                         </a>
                     </div>
-                    <p class="text-[11px] text-slate-500">العراق - خدمة واستشارات تقنية لجميع المحافظات.</p>
+                    <p class="text-xs text-cyan-400 font-mono font-bold">0786 230 3596</p>
+                    <p class="text-[11px] text-slate-500 mt-1">العراق - خدمة وتوصيل واستشارات لجميع المحافظات.</p>
                 </div>
             </div>
 
             <!-- Bottom Copyright -->
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
                 <p>© 2026 AZO TECH & ACCESSORIES. جميع الحقوق محفوظة.</p>
-                <p class="text-slate-500">جودة تستاهل سعرها ⚡</p>
+                <p class="text-slate-400 font-semibold">جودة تستاهل سعرها ⚡</p>
             </div>
         </div>
     </footer>
@@ -626,13 +662,13 @@
 
             if (!name || !phone || !msg) return;
 
-            // Formulate WhatsApp redirect message
+            // Updated WhatsApp Number: 9647862303596
             const storePhone = "9647862303596";
-            const fullMessage = `مرحباً AZO ⚡\nلدي استفسار جديد:\n- الاسم: ${name}\n- الهاتف: ${phone}\n- موضوع الاستفسار: ${type}\n- التفاصيل:\n${msg}`;
+            const fullMessage = `مرحباً AZO ⚡\nلدي استفسار عبر الموقع:\n- الاسم: ${name}\n- الهاتف: ${phone}\n- موضوع الاستفسار: ${type}\n- التفاصيل:\n${msg}`;
             const encoded = encodeURIComponent(fullMessage);
 
-            // Show Toast feedback
-            showToast("تم تجهيز رسالتك", "جاري فتح المحادثة المباشرة مع فريق الدعم...");
+            // Show Toast notification feedback
+            showToast("تم تجهيز رسالتك", "جاري توجيهك إلى محادثة الواتساب...");
 
             // Reset form
             document.getElementById('contactForm').reset();
